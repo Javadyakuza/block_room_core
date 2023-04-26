@@ -8,12 +8,13 @@ module.exports = {
   networks: {
     hardhat: {
       forking: {
-        url: 'https://goerli.infura.io/v3/97bddd3857c64670b5ce2cf5b572ef18',
+        url: 'https://goerli.infura.io/v3/<YOUR_API_KEY>',
       },
     },
-    forked: {
-      url: 'http://127.0.0.1:8545/',
-      accounts: [process.env.EOA_FIRST, process.env.EOA_SECOND],
-    },
+    // fork a netwok with hardhat in case of using the below config
+    // forked: {
+    //   url: 'http://127.0.0.1:8545/',
+    //   accounts: [process.env.EOA_FIRST, process.env.EOA_SECOND],
+    // },
   },
 }
