@@ -1,0 +1,2 @@
+zero_address = '0x0000000000000000000000000000000000000000'
+module.exports = zero_address
