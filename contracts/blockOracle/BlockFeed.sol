@@ -23,6 +23,7 @@ contract BlockFeed is Ownable, Pausable, ZAP {
 
     mapping(uint256 => mapping(uint64 => uint8)) private blockOf;
     mapping(uint256 => mapping(uint64 => uint8)) private isBlocked;
+    mapping(uint256 => mapping(uint8 => uint256)) public blockAge; // since it has been verified
     mapping(address => bool) private isBlocker;
     mapping(uint64 => address) private blockersAddresses;
 
@@ -104,6 +105,10 @@ contract BlockFeed is Ownable, Pausable, ZAP {
                     blockOf[_blockBatch[i].blockId][
                         _blockBatch[i].nationalId
                     ] += _blockBatch[i].component;
+                    // restarting the BlockAge fot this blockId and component
+                    blockAge[_blockBatch[i].blockId][
+                        _blockBatch[i].component
+                    ] = block.timestamp;
                 } else {
                     // means the Block is wrapped so checking its components with isBlocked {BlockWrapper}
                     require(
@@ -120,6 +125,10 @@ contract BlockFeed is Ownable, Pausable, ZAP {
                     blockOf[_blockBatch[i].blockId][
                         _blockBatch[i].nationalId
                     ] = _blockBatch[i].component;
+                    // restarting the BlockAge fot this blockId and component
+                    blockAge[_blockBatch[i].blockId][
+                        _blockBatch[i].component
+                    ] = block.timestamp;
                 }
             }
         }
@@ -163,6 +172,14 @@ contract BlockFeed is Ownable, Pausable, ZAP {
         uint8 _component
     ) external view whenNotPaused returns (bool isUsersBlock) {
         return blockOf[_blockId][_nationalId] == _component;
+    }
+
+    function isBlockPending(
+        uint256 _blockId,
+        uint8 _component
+    ) public view returns (bool isPending) {
+        uint256 oneDay = 86400; // number of seconds in a day
+        return (block.timestamp >= blockAge[_blockId][_component] + oneDay);
     }
 
     // get functions //

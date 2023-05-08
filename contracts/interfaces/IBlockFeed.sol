@@ -61,4 +61,16 @@ interface IBlockFeed {
         uint64 _nationalId,
         uint8 _component
     ) external view returns (bool isUsersBlock);
+
+    /**
+     * @notice @dev eveery block that gets verified needs to pass a day in seconds in order to be able to be wrapped in BLockWrapper
+     * the reason is for preventing user to verify the block in the platform and sell it outside and make a profit by selling in our platform too
+     * since every day the block ownerships gets updated this operatin is imposible
+     * @param _blockId blockId
+     * @param _component components of the blockId
+     */
+    function isBlockPending(
+        uint256 _blockId,
+        uint8 _component
+    ) external view returns (bool isPending);
 }

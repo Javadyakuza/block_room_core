@@ -60,6 +60,12 @@ contract BlockWrapper is Ownable, ZAP {
             BLOCKFEED.getBlockOf(_blockId, tempNationalId, _component),
             "only Block owner can wrap it !!"
         );
+        // checking that if the required time has been passed (1day) to wrap the block
+        /// @dev uncomment incase of prodiction usage
+        // require(
+        //     !BLOCKFEED.isBlockPending(_blockId, _component),
+        //     "your block is pending !!"
+        // );
         //updating the oracle
         BLOCKFEED.setIsBlocked(
             IBlockFeed.BlockOfParams(
