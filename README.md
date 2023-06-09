@@ -17,7 +17,7 @@ Before you begin, please ensure that you have the following prerequisites instal
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/yourusername/blockroom.git`
+1. Clone the repository: `git clone https://github.com/Javadyakuza/blockroom.git`
 2. Navigate to the root directory of the project
 3. Install the dependencies: `npm install`
 
