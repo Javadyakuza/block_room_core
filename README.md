@@ -42,10 +42,6 @@ Here are some possible features for future updates:
 - Integration with additional blockchains
 - Integration with other decentralized finance (DeFi) platforms
 
-## Contributors
-
-ME
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details.
