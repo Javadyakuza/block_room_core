@@ -10,7 +10,7 @@ import "./helpers/zeroAddressPreventer.sol";
 /**
  * @title BLOCK NFT.
  * @author javad_yakuza.
- * @notice @dev this is NFT Token with ERC-115 standard to represent the houses in BlockRoom
+ * @notice @dev this is NFT Token with ERC-1155 standard to represent the houses in BlockRoom
  */
 contract Block is ERC1155, Ownable, ERC1155Supply, ZAP {
     /// @dev emmited ehen a new Block is minted by the `mintBlock` function
